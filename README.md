@@ -119,6 +119,9 @@ viewファイルの作成
 
 ## ER図
 
+    
+    /home/sugamr/coachtech/laravel/test-contact-form/er-diagram.drawio
+
 ## URL
 
 開発環境     http://localhost/
