@@ -119,7 +119,8 @@ viewファイルの作成
 
 ## ER図
 
-        ![ER図](er-diagram.png)
+        ## ER図
+![ER図](er-diagram.png)
     
 
 ## URL
