@@ -119,7 +119,7 @@ viewファイルの作成
 
 ## ER図
 
-    
+    ![/home/sugamr/coachtech/laravel/test-contact-form/er-diagram.drawio](https://myoctocat.com/assets/images/base-octocat.svg)
     /home/sugamr/coachtech/laravel/test-contact-form/er-diagram.drawio
 
 ## URL
