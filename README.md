@@ -101,7 +101,7 @@ viewファイルの作成
     ・　Composer 2.8.10
             PHP version 8.1.33 (/usr/local/bin/php)
     
-    ・　MySQL 11.8.2-MariaDB, client 15.2 for debian-linux-gnu (x86_64)
+    ・　MySQL 8.0.26
     
 
 開発言語
@@ -119,8 +119,8 @@ viewファイルの作成
 
 ## ER図
 
-    ![/home/sugamr/coachtech/laravel/test-contact-form/er-diagram.drawio](https://myoctocat.com/assets/images/base-octocat.svg)
-    /home/sugamr/coachtech/laravel/test-contact-form/er-diagram.drawio
+        ![ER図](er-diagram.png)
+    
 
 ## URL
 
