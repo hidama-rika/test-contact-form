@@ -1,0 +1,385 @@
+body {
+    background-color: #fff;
+    font-family: sans-serif;
+    color: #897053;
+}
+
+h2 {
+    color: #897053;
+}
+
+.header {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    display: flex;
+    /* 横並びにする */
+    justify-content: center;
+    align-items: center;
+    /* 縦位置を中央に揃える */
+    padding: 20px 15px;
+    /* 内側の余白 */
+    max-width: 1230px;
+    margin: 0 auto;
+}
+
+.form__button-nav {
+    position: absolute;
+    /* ヘッダー内で右端に固定 */
+    right: 20px;
+    /* 右から20px */
+}
+
+.form__button-logout {
+    padding: 10px;
+    width: 150px;
+    height: 50px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #fff;
+    color: #8b7964;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.header__inner {
+    margin: 0 auto;
+    padding: 20px 15px;
+    max-width: 1230px;
+    text-align: center;
+}
+
+.header__logo {
+    color: #897053;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+/* Adminページのスタイル */
+.admin__content {
+    margin: 0 auto;
+    padding: 30px 15px;
+    max-width: 940px;
+}
+
+.admin__heading {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* 検索フォームのスタイル */
+.search-form {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    /* 各要素の間隔 */
+    max-width: 1000px;
+    /* 最大幅を指定 */
+    margin: 0 auto 30px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    /* 内部余白を含む */
+}
+
+.search-form__group {
+    display: flex;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.search-form__button-group {
+    justify-content: center;
+    /* ← ボタン中央に */
+}
+
+.search-form__input,
+.search-form__select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    color: #a0a0a0;
+    font-size: 14px;
+    width: 200px;
+    /* Adjust width as needed */
+}
+
+/* 幅の調整 */
+.search-form__input[name="keyword"] {
+    width: 300px;
+}
+
+.search-form__input[name="date"] {
+    width: 150px;
+}
+
+.search-form__select {
+    width: 110px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-right: 25px;
+    background-color: #f8f8f8;
+    position: relative;
+}
+
+.search-form__select[name="category"] {
+    width: 170px;
+}
+
+.search-form__select::-ms-expand {
+    display: none;
+}
+
+.search-form__select::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #a0a0a0;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.search-form__input::placeholder {
+    color: #c4c4c4;
+}
+
+.search-form__button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search-form__button--search {
+    background-color: #8b7964;
+}
+
+.search-form__button--reset {
+    background-color: #c1b399;
+    text-decoration: none;
+}
+
+/* エクスポートボタンとページネーションのスタイル */
+.bottom-controls {
+    max-width: 1000px;
+    /* ← フォームと同じ幅 */
+    margin: 20px auto;
+    /* ← 中央寄せ */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.export-button {
+    padding: 8px 20px;
+    border: 1px solid #c1b399;
+    background-color: #f8f8f8;
+    color: #8b7964;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.pagination nav>div:first-child {
+    display: none;
+}
+
+.pagination nav>div:last-child {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.pagination nav>div:last-child>div {
+    display: flex;
+    gap: 5px;
+}
+
+.pagination .flex a,
+.pagination .flex span {
+    text-decoration: none;
+    color: #5c5c5c;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.pagination .flex a:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination .flex span.relative.inline-flex.items-center.px-4.py-2.-ml-px.text-sm.font-medium.text-gray-500.bg-white.border.border-gray-300.cursor-default.leading-5 {
+    background-color: #8b7964;
+    color: #fff;
+    border-color: #8b7964;
+}
+
+.pagination .flex svg {
+    width: 15px;
+    height: 15px;
+}
+
+/* フォームのスタイル */
+.form {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 30px;
+    background-color: #fff;
+}
+
+/* テーブルのスタイル */
+.admin-table {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.admin-table__inner {
+    width: 100%;
+    border-collapse: collapse;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.admin-table__row {
+    border-bottom: 1px solid #ddd;
+}
+
+.admin-table__row:first-child {
+    background-color: #8b7964;
+    color: #fff;
+}
+
+.admin-table__header,
+.admin-table__text {
+    padding: 10px;
+    text-align: left;
+    border: none;
+}
+
+.admin-table__header {
+    font-weight: bold;
+}
+
+.admin-table__text {
+    background-color: #fff;
+}
+
+.admin-table__row:nth-child(odd) .admin-table__text {
+    background-color: #f5f5f5;
+}
+
+.admin-table__row:hover .admin-table__text {
+    background-color: #e0e0e0;
+}
+
+/* 詳細ボタンのスタイル */
+.admin-table__detail-button {
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+    color: #a0a0a0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* 詳細ボタンをtdの中央に配置 */
+.admin-table__text:last-child {
+    text-align: center;
+}
+
+/* モーダルウィンドウのスタイル */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* モーダル表示時に適用されるクラス */
+.modal.is-show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.modal-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-item label {
+    width: 150px;
+    font-weight: bold;
+    color: #8b7964;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.modal-item p {
+    margin: 0;
+    font-size: 14px;
+    width: 300px;
+}
+
+.modal-buttons {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.modal-buttons .delete-button {
+    padding: 8px 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #d74355;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}

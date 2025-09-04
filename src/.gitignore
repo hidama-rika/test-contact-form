@@ -13,3 +13,5 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+# Docker/MySQLの一時ファイルを無視
+docker/mysql/data/#innodb_temp/temp_1.ibt

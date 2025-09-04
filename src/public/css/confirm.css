@@ -1,0 +1,118 @@
+body {
+    background-color: #fff;
+    font-family: sans-serif;
+}
+
+h2 {
+    color: #897053;
+}
+
+.header {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+}
+
+.header__inner {
+    margin: 0 auto;
+    padding: 20px 15px;
+    max-width: 1230px;
+    text-align: center;
+}
+
+.header__logo {
+    color: #897053;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.confirm__content {
+    margin: 0 auto;
+    padding: 30px 15px;
+    max-width: 1230px;
+}
+
+.confirm__heading {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.form {
+    margin: 0 auto;
+    width: 70%;
+}
+
+.confirm-table {
+    border: 1px solid #897053;
+}
+
+.confirm-table__inner {
+    width: 100%;
+}
+
+.confirm-table__header {
+    padding: 15px;
+    width: 30%;
+    border-bottom: 1px solid #fff;
+    background-color: #897053;
+    color: #fff;
+    text-align: left;
+    font-size: 16px;
+}
+
+.confirm-table__text {
+    padding: 15px;
+    border-bottom: 1px solid #897053;
+    color: #897053;
+}
+
+.confirm-table__text input {
+    width: 100%;
+    outline: none;
+    border: none;
+}
+
+.confirm-table__row:last-child .confirm-table__header,
+.confirm-table__row:last-child .confirm-table__text {
+    border-bottom-width: 0;
+}
+
+.form__button--double {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.form__button {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.form__button-submit {
+    padding: 10px;
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: 3px;
+    background: #897053;
+    color: #fff;
+    cursor: pointer;
+}
+
+.form__button-edit {
+    padding: 10px;
+    width: 100px;
+    height: 50px;
+    background: #fff;
+    color: #8b7964;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: underline;
+    display: inline-flex;
+    /* Flexboxの子要素として中央寄せするために追加 */
+    align-items: center;
+    /* 文字を垂直方向の中央に */
+    justify-content: center;
+    /* 文字を水平方向の中央に */
+}

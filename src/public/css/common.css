@@ -1,0 +1,23 @@
+.header {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 15px;
+    max-width: 1230px;
+    margin: 0 auto;
+}
+
+.header__inner {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.header__logo {
+    color: #897053;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+}

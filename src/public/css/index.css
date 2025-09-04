@@ -1,0 +1,231 @@
+body {
+    background-color: #fff;
+    font-family: sans-serif;
+    color: #897053;
+}
+
+h2 {
+    color: #897053;
+}
+
+.header {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+}
+
+.header__inner {
+    margin: 0 auto;
+    padding: 20px 15px;
+    max-width: 1230px;
+    text-align: center;
+}
+
+.header__logo {
+    color: #897053;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.contact-form__content {
+    margin: 0 auto;
+    padding: 30px 15px;
+    max-width: 1230px;
+}
+
+.contact-form__heading {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.form {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 30px;
+    background-color: #fff;
+    color: #897053;
+}
+
+/* フォームのグループ（タイトルと入力欄を横並びにする） */
+.form__group {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 50px;
+    color: #897053;
+}
+
+.form__group-title {
+    color: #897053;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.form__group-content {
+    color: #897053;
+    flex-grow: 1;
+    /* 入力部分が残りのスペースを占有 */
+    width: 100%;
+    display: flex;
+    /* これで中の要素をさらに調整 */
+    flex-direction: column;
+    /* 入力欄を縦に並べる */
+}
+
+.form__label--required {
+    color: #ff0000;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.form__error {
+    height: 20px;
+    color: #ff0000;
+    text-align: left;
+    margin-top: 5px;
+}
+
+/* お名前と電話番号の入力フォームの背景色を修正 */
+.form__input--lastname input,
+.form__input--firstname input,
+.form__input--tel input {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ddd;
+    background-color: #f5f5f5;
+    /* 他のフォームと同じ背景色に設定 */
+    border-radius: 3px;
+    box-sizing: border-box;
+    /* paddingとborderを幅に含める */
+}
+
+/* 各入力欄のスタイル */
+.form__input--text input,
+.form__input--textarea textarea,
+.form__input--select select {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ddd;
+    background-color: #f5f5f5;
+    border-radius: 3px;
+    appearance: none;
+}
+
+.form__input--text input,
+.form__input--textarea textarea {
+    height: 40px;
+}
+
+.form__input--textarea textarea {
+    height: 120px;
+}
+
+.form__input--select {
+    position: relative;
+    color: #aaa;
+}
+
+.form__input--select::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%) rotate(45deg);
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #aaa;
+    border-bottom: 2px solid #aaa;
+    pointer-events: none;
+}
+
+/* お名前と電話番号の横並び */
+.form__input--text-split {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.form__input--text-split .form__input--lastname,
+.form__input--text-split .form__input--firstname {
+    flex: 1;
+}
+
+.form__input--text-split .form__input--tel {
+    flex: 1;
+}
+
+.form__input--text-split span {
+    margin: 0 5px;
+}
+
+/* 性別のラジオボタン */
+.form__input--radio {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+    /* タイトルとラジオボタンの間に少しスペースを空ける */
+    color: #897053;
+}
+
+.form__input--radio input[type="radio"] {
+    display: none;
+}
+
+.form__input--radio label {
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+    line-height: 20px;
+    color: #897053;
+}
+
+.form__input--radio label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.form__input--radio input[type="radio"]:checked+label::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background-color: #8b7964;
+    border-radius: 50%;
+}
+
+.form__button {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.form__button-submit {
+    padding: 10px;
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 3px;
+    background: #8b7964;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
