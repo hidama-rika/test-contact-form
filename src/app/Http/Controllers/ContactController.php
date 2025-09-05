@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,10 @@ class ContactController extends Controller
 {
     public function index()
     {
-        return view('index');
+        // 問い合わせフォームのカテゴリを取得
+        $categories = Category::all();
+
+        return view('index', compact('categories'));
     }
 
     public function confirm(ContactRequest $request)
@@ -26,37 +30,48 @@ class ContactController extends Controller
         $validatedData = $request->validated();
 
         // 姓と名を結合して'name'キーを作成
-        $validatedData['name'] = $validatedData['lastname'] . ' ' . $validatedData['firstname'];
+        $validatedData['name'] = $validatedData['last_name'] . ' ' . $validatedData['first_name'];
 
         // 3つの電話番号を結合して'tel'キーを作成
-        $validatedData['tel'] = $validatedData['tel_part1'] . '-' . $validatedData['tel_part2'] . '-' . $validatedData['tel_part3'];
+        $validatedData['tel'] = $validatedData['tel_part1'] . $validatedData['tel_part2'] . $validatedData['tel_part3'];
 
-        return view('confirm', compact('validatedData'));
+        // category_idを使ってカテゴリ情報を取得
+        $category = Category::find($validatedData['category_id']);
+
+        // 取得したカテゴリ情報とバリデーション済みのデータをビューに渡す
+        return view('confirm', compact('validatedData', 'category'));
     }
 
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
-        // 姓と名を結合して一つの 'name' にする
-        $name = $request->input('lastname') . ' ' . $request->input('firstname');
+        // storeメソッドもContactRequestを使う
+        $contact = $request->validated();
 
-        // 3つの電話番号を結合して一つの 'tel' にする
-        $tel = $request->input('tel_part1') . $request->input('tel_part2') . $request->input('tel_part3');
+        // データベースに保存するための性別の値を、文字列から数字に変換します。
+        $genderValue = match ($contact['gender']) {
+            '男性' => 1,
+            '女性' => 2,
+            'その他' => 3,
+            default => null, // 予期しない値の場合
+        };
 
-        // 必要なデータを全て取得
-        $contact = $request->only([
-            'email',
-            'address',
-            'building',
-            'category',
-            'detail'
-        ]);
-
-        // 結合した 'name' と 'tel' を追加
-        $contact['name'] = $name;
-        $contact['tel'] = $tel;
+        // データベースに保存するためのデータ配列を作成
+        $contactData = [
+            'last_name' => $contact['last_name'],
+            'first_name' => $contact['first_name'],
+            'email' => $contact['email'],
+            'gender' => $genderValue, // 変換した数字の値を代入
+            'address' => $contact['address'],
+            'building' => $contact['building'],
+            'detail' => $contact['detail'],
+            // category_idを明示的に含める
+            'category_id' => $contact['category_id'],
+            // 3つの電話番号を結合してtelとして保存
+            'tel' => $contact['tel_part1'] . $contact['tel_part2'] . $contact['tel_part3'],
+        ];
 
         // データベースに保存
-        Contact::create($contact);
+        Contact::create($contactData);
 
         return view('thanks');
     }

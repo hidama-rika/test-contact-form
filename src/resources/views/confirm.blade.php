@@ -10,7 +10,7 @@
 @section('content')
 <div class="confirm__content">
     <div class="confirm__heading">
-        <h2>Fashionably Late</h2>
+        <h2>Confirm</h2>
     </div>
     <form class="form" action="/contacts" method="post">
     @csrf
@@ -19,49 +19,60 @@
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">お名前</th>
                     <td class="confirm-table__text">
-                        <input type="text" name="name" value="{{ $contact['name'] }}" readonly />
+                        <input type="text" name="name" value="{{ $validatedData['last_name'] }} {{ $validatedData['first_name'] }}" readonly />
+                        <input type="hidden" name="last_name" value="{{ $validatedData['last_name'] }}" />
+                        <input type="hidden" name="first_name" value="{{ $validatedData['first_name'] }}" />
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">性別</th>
                     <td class="confirm-table__text">
-                        <input type="text" name="gender" value="{{ $contact['gender'] }}" readonly />
+                        <input type="text" name="gender" value="{{ $validatedData['gender'] }}" readonly />
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">メールアドレス</th>
                     <td class="confirm-table__text">
-                        <input type="email" name="email" value="{{ $contact['email'] }}" readonly />
+                        <input type="email" name="email" value="{{ $validatedData['email'] }}" readonly />
+                        <input type="hidden" name="email" value="{{ $validatedData['email'] }}" />
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">電話番号</th>
                     <td class="confirm-table__text">
-                        <input type="tel" name="tel" value="{{ $contact['tel'] }} readonly "/>
+                        <input type="hidden" name="tel" value="{{ $validatedData['tel'] }}" />
+                        {{ $validatedData['tel'] }}
+                        <input type="hidden" name="tel_part1" value="{{ $validatedData['tel_part1'] }}" />
+                        <input type="hidden" name="tel_part2" value="{{ $validatedData['tel_part2'] }}" />
+                        <input type="hidden" name="tel_part3" value="{{ $validatedData['tel_part3'] }}" />
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">住所</th>
                     <td class="confirm-table__text">
-                        <input type="address" name="address" value="{{ $contact['address'] }}" readonly />
+                        <input type="text" name="address" value="{{ $validatedData['address'] }}" readonly />
+                        <input type="hidden" name="address" value="{{ $validatedData['address'] }}" />
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">建物名</th>
                     <td class="confirm-table__text">
-                        <input type="address" name="building" value="{{ $contact['building'] }}" readonly />
+                        <input type="text" name="building" value="{{ $validatedData['building'] }}" readonly />
+                        <input type="hidden" name="building" value="{{ $validatedData['building'] }}" />
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">お問い合わせの種類</th>
                     <td class="confirm-table__text">
-                        <input type="text" name="category" value="{{ $contact['category'] }}" readonly />
+                        {{ $category->content }}
+                        <input type="hidden" name="category_id" value="{{ $category->id }}" />
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">お問い合わせ内容</th>
                     <td class="confirm-table__text">
-                        <input type="text" name="detail" value="{{ $contact['detail'] }}" readonly />
+                        {{ $validatedData['detail'] }}
+                        <input type="hidden" name="detail" value="{{ $validatedData['detail'] }}" />
                     </td>
                 </tr>
             </table>
@@ -71,7 +82,7 @@
                 <button class="form__button-submit" type="submit">送信</button>
             </div>
             <div class="form__button">
-                <a href="/" class="form__button-edit">修正</a>
+                <button class="form__button-edit" type="button" onClick="history.back()">修正</button>
             </div>
         </div>
     </form>

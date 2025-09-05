@@ -1,48 +1,56 @@
-body {
-    background-color: #fff;
-    font-family: sans-serif;
-}
-
-h2 {
-    color: #897053;
-}
-
-.header {
-    background: #fff;
-    border-bottom: 2px solid #ddd;
-}
-
-.header__inner {
-    margin: 0 auto;
-    padding: 20px 15px;
-    max-width: 1230px;
-    text-align: center;
-}
-
-.header__logo {
-    color: #897053;
-    text-decoration: none;
-    font-size: 24px;
-}
-
 .thanks-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+    z-index: 1;
+    /* 背景テキストの上に表示させるため */
     min-height: 80vh;
     /* 画面の中央に配置するための高さ */
+}
+
+/* 疑似要素で背景テキストを生成 */
+.thanks-container::before {
+    content: "Thank you";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* 中央寄せ */
+    font-family: "Epunda Slab", serif;
+    font-size: 250px;
+    font-weight: 400;
+    font-style: normal;
+    color: rgba(220, 220, 220, 0.2);
+    /* 薄い文字色 */
+    z-index: -1;
+    /* 他の要素の背面に配置 */
+    white-space: nowrap;
+    /* テキストの折り返しを防ぐ */
+    pointer-events: none;
+    /* テキストがクリックイベントをブロックしないようにする */
+}
+
+/* 感謝のメッセージのスタイル */
+.thanks__heading h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
 }
 
 .thanks__content {
     margin: 0 auto;
     padding: 30px 15px;
     max-width: 1230px;
+    color: #897053;
 }
 
 .thanks__heading {
     margin-bottom: 20px;
 }
+
+
 
 .form__button {
     margin-top: 20px;

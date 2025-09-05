@@ -20,21 +20,21 @@
                 <span class="form__label--required">※</span>
             </div>
             <div class="form__group-content">
-            <div class="form__input--text-split">
-                <div class="form__input--lastname">
-                    <input type="text" name="lastname" placeholder="例: 山田" value="{{ old('lastname') }}" />
+                <div class="form__input--text-split">
+                    <div class="form__input--last_name">
+                        <input type="text" name="last_name" placeholder="例: 山田" value="{{ old('last_name') }}" />
+                    </div>
+                    <div class="form__input--first_name">
+                        <input type="text" name="first_name" placeholder="例: 太郎" value="{{ old('first_name') }}" />
+                    </div>
                 </div>
-                <div class="form__input--firstname">
-                    <input type="text" name="firstname" placeholder="例: 太郎" value="{{ old('firstname') }}" />
-                    </div>
-                    <div class="form__error">
-                        @error('lastname')
-                            <div class="error-message">{{ $message }}</div>
-                        @enderror
-                        @error('firstname')
-                        <div class="error-message">{{ $message }}</div>
-                        @enderror
-                    </div>
+                <div class="form__error">
+                    @error('last_name')
+                    <div class="error-message">{{ $message }}</div>
+                    @enderror
+                    @error('first_name')
+                    <div class="error-message">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--radio">
-                    <input type="radio" name="gender" id="male" value="男性" checked />
+                    <input type="radio" name="gender" id="male" value="男性" />
                     <label for="male">男性</label>
                     <input type="radio" name="gender" id="female" value="女性" />
                     <label for="female">女性</label>
@@ -98,9 +98,10 @@
                     </div>
                 </div>
                 <div class="form__error">
-                    @error('tel')
-                    <div class="error-message">{{ $message }}</div>
-                    @enderror
+                    <!-- {{-- いずれかの電話番号の入力フォームにエラーがあれば表示 --}} -->
+                    @if ($errors->has('tel_part1') || $errors->has('tel_part2') || $errors->has('tel_part3'))
+                        <div class="error-message">電話番号を入力してください</div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -145,17 +146,17 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--select">
-                    <select name="category">
+                    <select name="category_id" required>
                         <option value="" disabled selected>選択してください</option>
-                        <option value="１．商品のお届けについて">１．商品のお届けについて</option>
-                        <option value="２．商品の交換について">２．商品の交換について</option>
-                        <option value="３．商品トラブル">３．商品トラブル</option>
-                        <option value="４．ショップへのお問い合わせについて">４．ショップへのお問い合わせについて</option>
-                        <option value="その他">その他</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}" @if(old('category_id') == $category->id) selected @endif>
+                                {{ $category->content }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form__error">
-                    @error('category')
+                    @error('category_id')
                     {{ $message }}
                     @enderror
                 </div>

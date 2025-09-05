@@ -1,37 +1,12 @@
-body {
-    background-color: #fff;
-    font-family: sans-serif;
-}
-
-h2 {
-    color: #897053;
-}
-
-.header {
-    background: #fff;
-    border-bottom: 2px solid #ddd;
-}
-
-.header__inner {
-    margin: 0 auto;
-    padding: 20px 15px;
-    max-width: 1230px;
-    text-align: center;
-}
-
-.header__logo {
-    color: #897053;
-    text-decoration: none;
-    font-size: 24px;
-}
-
 .confirm__content {
     margin: 0 auto;
     padding: 30px 15px;
     max-width: 1230px;
+    color: #897053;
 }
 
 .confirm__heading {
+    font-family: "Epunda Slab", serif;
     margin-bottom: 40px;
     text-align: center;
 }
