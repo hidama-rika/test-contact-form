@@ -21,7 +21,6 @@
             <h2>Admin</h2>
         </div>
 
-        <!-- 修正箇所：検索とエクスポートのフォームを統合 -->
         <form class="search-form" action="{{ route('admin.index') }}" method="GET">
             <div class="search-form__group">
                 <input type="text" class="search-form__input" placeholder="名前やメールアドレスを入力してください" name="keyword" value="{{ request('keyword') }}">
@@ -45,9 +44,7 @@
             </div>
         </form>
 
-        <!-- エクスポートボタンとページネーションを同じ行に配置 -->
         <div class="bottom-controls">
-            <!-- 検索条件を保持し、エクスポート用の POST リクエストを送信するフォーム -->
             <form action="{{ route('admin.export') }}" method="POST" id="exportForm">
                 @csrf
                 <input type="hidden" name="keyword">
@@ -63,7 +60,6 @@
 
         <div class="admin-table">
             <table class="admin-table__inner">
-                <!-- テーブルヘッダー -->
                 <tr class="admin-table__row">
                     <th class="admin-table__header">お名前</th>
                     <th class="admin-table__header">性別</th>
@@ -71,11 +67,10 @@
                     <th class="admin-table__header">お問い合わせの種類</th>
                     <th class="admin-table__header"></th>
                 </tr>
-                <!-- テーブルデータ (動的表示) -->
                 @foreach($contacts as $contact)
                 <tr class="admin-table__row"
                     data-id="{{ $contact->id }}"
-                    data-name="{{ $contact->first_name . ' ' . $contact->last_name }}"
+                    data-name="{{ $contact->last_name . ' ' . $contact->first_name }}"
                     data-gender="{{ $contact->gender === 1 ? '男性' : ($contact->gender === 2 ? '女性' : 'その他') }}"
                     data-email="{{ $contact->email }}"
                     data-tel="{{ $contact->tel }}"
@@ -105,10 +100,9 @@
 @endsection
 
 @section('scripts')
-<!-- モーダルウィンドウ -->
-<div id="detailModal" class="modal">
+<dialog id="detailModal" class="modal">
     <div class="modal-content">
-        <span class="modal-close">&times;</span>
+        <button class="modal-close-button">&times;</button>
         <div class="modal-item">
             <label>お名前</label>
             <p id="modalName"></p>
@@ -150,12 +144,12 @@
             </form>
         </div>
     </div>
-</div>
+</dialog>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById('detailModal');
-        const closeBtn = document.querySelector('.modal-close');
+        const closeBtn = document.querySelector('.modal-close-button');
         const detailButtons = document.querySelectorAll('.admin-table__detail-button');
 
         // 詳細ボタンをクリックしたときの処理
@@ -172,6 +166,7 @@
                 const detail = row.dataset.detail;
                 const id = row.dataset.id;
 
+                // モーダル内の要素にデータをセット
                 document.getElementById('modalName').textContent = name;
                 document.getElementById('modalGender').textContent = gender;
                 document.getElementById('modalEmail').textContent = email;
@@ -182,24 +177,18 @@
                 document.getElementById('modalContent').textContent = detail;
                 document.getElementById('deleteId').value = id;
 
-                // modalのCSSに「is-showクラス」を追加して、モーダルを表示する
-                modal.classList.add('is-show');
+                // <dialog>タグの showModal() メソッドでモーダルを表示
+                modal.showModal();
             });
         });
 
         // 閉じるボタンをクリックしたときの処理
         closeBtn.addEventListener('click', () => {
-            modal.classList.remove('is-show');
+            // <dialog>タグの close() メソッドでモーダルを閉じる
+            modal.close();
         });
 
-        // モーダルの外側をクリックしたときの処理
-        window.addEventListener('click', (e) => {
-            if (e.target == modal) {
-                modal.style.display = 'none';
-            }
-        });
-
-        // 修正箇所: エクスポートフォームの値を動的に更新する処理を追加
+        // エクスポートフォームの値を動的に更新する処理
         const exportForm = document.getElementById('exportForm');
         const searchForm = document.querySelector('.search-form');
 
