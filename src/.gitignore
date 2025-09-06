@@ -14,4 +14,4 @@ yarn-error.log
 /.idea
 /.vscode
 # Docker/MySQLの一時ファイルを無視
-docker/mysql/data
+/docker/mysql/data/
