@@ -90,13 +90,12 @@
                     </td>
                     <td class="admin-table__text">{{ $contact->email }}</td>
                     <td class="admin-table__text">{{ $contact->category->content }}</td>
-                    <td class="admin-table__text"><button class="admin-table__detail-button">詳細</button></td>
+                    <td class="admin-table__text"><button wire:click="openModal({{ $contact->id }})" type="button" class="admin-table__detail-button">詳細</button></td>
                 </tr>
                 @endforeach
             </table>
         </div>
     </div>
-
 @endsection
 
 @section('scripts')
